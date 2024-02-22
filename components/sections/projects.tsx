@@ -55,7 +55,7 @@ const projects: project[] = [
     id: 5,
     name: "IMOB - Backend",
     technologies: ["Typescript", "Nest.js", "Prisma"],
-    imgURL: "",
+    imgURL: imob,
     github: "https://github.com/lucasd09/imob-api",
     URL: "",
   },
