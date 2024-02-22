@@ -139,11 +139,11 @@ export default function PortfolioTab() {
       <div className="w-full text-start px-4">
         <h2 className="font-medium text-lg mb-4">Hard skills</h2>
         <div className="space-y-2">
-          <Skill icon={<Code />} title="Delphi" level="advanced" />
-          <Skill icon={<Code />} title="SQL - MySQL" level="advanced" />
-          <Skill icon={<Code />} title="Typescript" level="intermediate" />
-          <Skill icon={<Code />} title="Python" level="beginner" />
-          <Skill icon={<Code />} title="C#" level="beginner" />
+          <Skill icon={<Code />} title="Delphi" level={5} />
+          <Skill icon={<Code />} title="SQL - MySQL" level={5} />
+          <Skill icon={<Code />} title="Typescript" level={3} />
+          <Skill icon={<Code />} title="Python" level={1} />
+          <Skill icon={<Code />} title="C#" level={1} />
         </div>
         <h2 className="font-medium text-lg my-4">Soft skills</h2>
         <div className="space-y-2">

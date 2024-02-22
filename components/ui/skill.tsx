@@ -4,7 +4,7 @@ import Skillbar from "./skillbar";
 type SkillProps = {
   icon: ReactNode;
   title: string;
-  level?: "beginner" | "intermediate" | "advanced";
+  level?: number;
 };
 
 export default function Skill({ icon, level, title }: SkillProps) {
