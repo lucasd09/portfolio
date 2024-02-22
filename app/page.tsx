@@ -12,7 +12,7 @@ export default function Home() {
           <TabsTrigger value="portfolio">Portfolio</TabsTrigger>
           <TabsTrigger value="projects">Projetos</TabsTrigger>
           <TabsTrigger value="articles">Artigos</TabsTrigger>
-          <TabsTrigger value="Contact">Contato</TabsTrigger>
+          <TabsTrigger value="contact">Contato</TabsTrigger>
         </TabsList>
         <TabsContent value="portfolio">
           <PortfolioTab />
