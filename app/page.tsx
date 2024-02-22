@@ -1,3 +1,5 @@
+import ArticlesTab from "@/components/sections/articles";
+import ContactTab from "@/components/sections/contact";
 import PortfolioTab from "@/components/sections/portfolio";
 import ProjectsTab from "@/components/sections/projects";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -19,10 +21,10 @@ export default function Home() {
           <ProjectsTab />
         </TabsContent>
         <TabsContent value="articles" className="flex justify-center">
-          artigos do sexo
+          <ArticlesTab />
         </TabsContent>
         <TabsContent value="contact" className="flex justify-center">
-          contatos do sexo
+          <ContactTab />
         </TabsContent>
       </Tabs>
     </div>

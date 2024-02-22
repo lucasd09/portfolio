@@ -71,7 +71,7 @@ export default function ProjectsTab() {
     <div className=" flex mt-12 lg:w-[1200px] justify-evenly flex-wrap sm:w-full">
       {projects.map((project) => {
         return (
-          <Card key={project.id} className="rounded-sm mb-8">
+          <Card key={project.id} className="rounded-sm mb-8 dark:bg-secondary">
             <Image
               alt={project.name}
               src={project.imgURL}
