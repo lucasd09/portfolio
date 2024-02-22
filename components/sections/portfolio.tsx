@@ -31,7 +31,7 @@ const companies = [
         type: "Tempo integral",
         time: "ago de 2022 - fev de 2023 | 6 meses",
         description:
-          "Faço Controle de Versão, Manutenção do banco de Dados e Manutenção do Software, além de coordenar o time de desenvolvimento para solucionar as dores dos clientes.",
+          "Comecei a desenvolver features mais complexas, implementando e fazendo manutenção no sistema de NF-e, geração de documentos fiscais como SPED, além de conhecer e aprender regras fiscais mais aprofundadas de um ERP.",
       },
       {
         id: 3,
@@ -39,7 +39,7 @@ const companies = [
         type: "Estágio",
         time: "nov de 2021 - ago de 2022 | 9 meses",
         description:
-          "Faço Controle de Versão, Manutenção do banco de Dados e Manutenção do Software, além de coordenar o time de desenvolvimento para solucionar as dores dos clientes.",
+          "Fazia manutenção em features mais simples do sistema, mas com foco no aprendizado e preparo para as futuras implementações. As maiores contribuições nesse período foram os relatórios personalizados que era pedido pelos clientes.",
       },
     ],
   },
