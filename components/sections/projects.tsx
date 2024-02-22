@@ -59,14 +59,6 @@ const projects: project[] = [
     github: "https://github.com/lucasd09/imob-api",
     URL: "",
   },
-  {
-    id: 6,
-    name: "Portfolio - Lucas Dalan",
-    technologies: ["Typescript", "Next.js"],
-    imgURL: portfolioimg,
-    github: "https://github.com/lucasd09/portfolio",
-    URL: "",
-  },
 ];
 
 export default function ProjectsTab() {
