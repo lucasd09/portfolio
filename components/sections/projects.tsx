@@ -25,7 +25,7 @@ const projects: project[] = [
     technologies: ["Typescript", "Next.js"],
     imgURL: portfolioimg,
     github: "https://github.com/lucasd09/portfolio",
-    URL: "",
+    URL: "https://lucasdalan.vercel.app/",
   },
   {
     id: 2,
@@ -33,7 +33,7 @@ const projects: project[] = [
     technologies: ["Typescript", "Next.js", "vanilla-exctract"],
     imgURL: learnly,
     github: "https://github.com/lucasd09/learnly",
-    URL: "",
+    URL: "https://learnly-alpha.vercel.app/app/schedule",
   },
   {
     id: 3,
@@ -41,7 +41,7 @@ const projects: project[] = [
     technologies: ["Typescript", "React.js", "PWA"],
     imgURL: reactpwa,
     github: "https://github.com/lucasd09/react-pwa",
-    URL: "",
+    URL: "https://sabatine-react-pwa.vercel.app/",
   },
   {
     id: 4,
@@ -49,7 +49,7 @@ const projects: project[] = [
     technologies: ["Typescript", "Next.js"],
     imgURL: imob,
     github: "https://github.com/lucasd09/imob",
-    URL: "",
+    URL: "https://imob-alpha.vercel.app/login",
   },
   {
     id: 5,
