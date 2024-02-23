@@ -1,5 +1,5 @@
 import Image from "next/image";
-import PortfolioPic from "@/public/portfolio_pic.png";
+import PortfolioPic from "@/public/portfolio_pic.jpg";
 import CompanyLogo from "@/public/frg.jpg";
 import dsinLogo from "@/public/dsin.jpg";
 import univemlogo from "@/public/univemmarilia_logo.jpg";
@@ -117,7 +117,7 @@ export default function PortfolioTab() {
       <Image
         alt="portfolio_pic"
         src={PortfolioPic}
-        className="rounded-full w-[256px]"
+        className="rounded-md w-[256px]"
       />
       <h1 className="scroll-m-20 text-xl font-bold tracking-tight">
         Lucas Dalan
