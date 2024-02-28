@@ -25,14 +25,6 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="flex justify-center py-4 border-b">
-            <h1 className="scroll-m-20 text-3xl font-bold tracking-tight">
-              Lucas Dalan
-            </h1>
-            <div className="absolute flex items-center space-x-2 ml-[75%]">
-              <ThemeToggle />
-            </div>
-          </div>
           {children}
         </ThemeProvider>
       </body>
