@@ -13,8 +13,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import db from "@/services/firestore";
 
 const schema = z.object({
   email: z
@@ -32,21 +30,14 @@ export default function Signin() {
   const router = useRouter();
 
   async function handleForm({ email, password }: form) {
-    const auth = getAuth(db);
-    signInWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        router.push("/dashboard");
-      })
-      .catch(() => {
-        form.setError("email", {
-          message: "Email ou senha inválidos",
-          type: "validate",
-        });
-        form.setError("password", {
-          message: "Email ou senha inválidos",
-          type: "validate",
-        });
-      });
+    form.setError("email", {
+      message: "Email ou senha inválidos",
+      type: "validate",
+    });
+    form.setError("password", {
+      message: "Email ou senha inválidos",
+      type: "validate",
+    });
   }
 
   return (
