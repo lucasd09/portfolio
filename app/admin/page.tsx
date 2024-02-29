@@ -13,31 +13,25 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 
 const schema = z.object({
   email: z
     .string({ required_error: "Obrigatório" })
     .email({ message: "E-mail inválido" }),
-  password: z
-    .string({ required_error: "Obrigatório" })
-    .min(1, { message: "Insira sua senha" }),
 });
 
 type form = z.infer<typeof schema>;
 
 export default function Signin() {
-  const form = useForm<form>({ resolver: zodResolver(schema) });
+  const form = useForm<form>({
+    resolver: zodResolver(schema),
+    defaultValues: { email: "" },
+  });
   const router = useRouter();
 
-  async function handleForm({ email, password }: form) {
-    form.setError("email", {
-      message: "Email ou senha inválidos",
-      type: "validate",
-    });
-    form.setError("password", {
-      message: "Email ou senha inválidos",
-      type: "validate",
-    });
+  async function handleForm({ email }: form) {
+    await signIn("email", { email });
   }
 
   return (
@@ -53,19 +47,6 @@ export default function Signin() {
                   <FormLabel>Email</FormLabel>
                   <FormControl>
                     <Input {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="password"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Senha</FormLabel>
-                  <FormControl>
-                    <Input {...field} type="password" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
