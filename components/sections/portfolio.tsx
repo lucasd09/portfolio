@@ -118,6 +118,7 @@ export default function PortfolioTab() {
         alt="portfolio_pic"
         src={PortfolioPic}
         className="rounded-md w-[256px]"
+        priority
       />
       <h1 className="scroll-m-20 text-xl font-bold tracking-tight">
         Lucas Dalan
