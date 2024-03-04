@@ -14,6 +14,8 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
 import { Textarea } from "../ui/textarea";
+import { useRef } from "react";
+import { readFileAsDataURL } from "@/lib/utils";
 
 const schema = z.object({
   title: z.string(),
@@ -30,8 +32,14 @@ export default function ProjectForm() {
     resolver: zodResolver(schema),
     defaultValues: { title: "", description: "", image: "", repo: "", url: "" },
   });
+  const fileInputRef = useRef(HTMLInputElement);
 
   async function handleForm({ title, description, image, repo, url }: form) {
+    const file = fileInputRef.current.files[0];
+
+    const imgUrl = await readFileAsDataURL(file);
+
+    console.log(file);
     const data = {
       title,
       description,
@@ -108,7 +116,12 @@ export default function ProjectForm() {
                   <FormItem>
                     <FormLabel>Imagem</FormLabel>
                     <FormControl>
-                      <Input {...field} />
+                      <Input
+                        {...field}
+                        type="file"
+                        ref={fileInputRef}
+                        accept="image/*"
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

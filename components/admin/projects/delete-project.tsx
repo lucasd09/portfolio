@@ -31,9 +31,12 @@ export default function DeleteProject({ id }: { id: number }) {
         <AlertDialogFooter>
           <AlertDialogCancel>Cancelar</AlertDialogCancel>
           <AlertDialogAction
-            onClick={() => {
+            onClick={async () => {
+              await fetch(`http://localhost:3000/api/projects/${id}`, {
+                method: "DELETE",
+              });
               return toast("Sucesso", {
-                description: "Projeto removido com êxito.",
+                description: `Projeto removido com êxito. ${id}`,
               });
             }}
           >
