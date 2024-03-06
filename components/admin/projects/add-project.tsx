@@ -12,10 +12,11 @@ import {
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
-import { Textarea } from "../ui/textarea";
+import { Dialog, DialogContent, DialogTrigger } from "../../ui/dialog";
+import { Textarea } from "../../ui/textarea";
 import { useRef } from "react";
 import { readFileAsDataURL } from "@/lib/utils";
+import { toast } from "sonner";
 
 const schema = z.object({
   title: z.string(),
@@ -34,16 +35,16 @@ export default function ProjectForm() {
   });
   const fileInputRef = useRef(null);
 
-  async function handleForm({ title, description, image, repo, url }: form) {
+  async function handleForm({ title, description, repo, url }: form) {
+    //@ts-ignore
     const file = fileInputRef.current.files[0];
 
     const imgUrl = await readFileAsDataURL(file);
 
-    console.log(file);
     const data = {
       title,
       description,
-      image,
+      image: imgUrl,
       repo,
       url,
       user: { connect: { id: 1 } },
@@ -61,7 +62,10 @@ export default function ProjectForm() {
         if (!response.ok) {
           throw new Error("Erro ao realizar requisição.");
         }
-        return response.json();
+
+        return toast("Sucesso", {
+          description: `Projeto adicionado com êxito.`,
+        });
       })
       .then(() => {
         form.reset();

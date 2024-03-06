@@ -20,7 +20,7 @@ export async function POST(req: Request) {
     data: {
       title,
       description,
-      image: uploadedImage.public_id,
+      image: uploadedImage.url,
       repo,
       url,
       userId,

@@ -36,7 +36,7 @@ export default function DeleteProject({ id }: { id: number }) {
                 method: "DELETE",
               });
               return toast("Sucesso", {
-                description: `Projeto removido com êxito. ${id}`,
+                description: `Projeto removido com êxito.`,
               });
             }}
           >

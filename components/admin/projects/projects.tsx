@@ -1,8 +1,8 @@
 "use client";
 import { ColumnDef } from "@tanstack/react-table";
-import { DataTable } from "../ui/data-table";
+import { DataTable } from "../../ui/data-table";
 import ProjectForm from "./add-project";
-import DeleteProject from "./projects/delete-project";
+import DeleteProject from "./delete-project";
 import { useFetch } from "@/hooks/useSWR";
 
 type Project = {
