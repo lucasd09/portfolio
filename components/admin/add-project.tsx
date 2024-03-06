@@ -32,7 +32,7 @@ export default function ProjectForm() {
     resolver: zodResolver(schema),
     defaultValues: { title: "", description: "", image: "", repo: "", url: "" },
   });
-  const fileInputRef = useRef(HTMLInputElement);
+  const fileInputRef = useRef(null);
 
   async function handleForm({ title, description, image, repo, url }: form) {
     const file = fileInputRef.current.files[0];
