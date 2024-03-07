@@ -31,7 +31,13 @@ type form = z.infer<typeof schema>;
 export default function ProjectForm() {
   const form = useForm<form>({
     resolver: zodResolver(schema),
-    defaultValues: { title: "", description: "", image: "", repo: "", url: "" },
+    defaultValues: {
+      title: "",
+      description: "",
+      image: "",
+      repo: "",
+      url: "",
+    },
   });
   const fileInputRef = useRef(null);
 
@@ -51,7 +57,7 @@ export default function ProjectForm() {
       userId: "1",
     };
 
-    fetch("http://localhost:3000/api/projects", {
+    fetch("https://lucasdalan.vercel.app/api/projects", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

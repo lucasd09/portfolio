@@ -1,3 +1,4 @@
+import { RequestInit } from "next/dist/server/web/spec-extension/request";
 import { SWRConfiguration } from "swr";
 import useSWR from "swr/immutable";
 
@@ -7,13 +8,12 @@ const defaultOptions: SWRConfiguration = {
 
 export function useFetch<data = unknown, error = unknown>(
   path: string,
-  swrOptions = defaultOptions,
-  method: "GET" | "POST" | "PATCH" | "DELETE" = "GET"
+  swrOptions = defaultOptions
 ) {
   const data = useSWR<data, error>(
     path,
-    async (url: string) => {
-      const res = await fetch(url);
+    async (url: string, init?: RequestInit) => {
+      const res = await fetch("https://lucasdalan.vercel.app/api" + url, init);
       return await res.json();
     },
     swrOptions

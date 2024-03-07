@@ -57,7 +57,7 @@ model VerificationToken {
 model Project {
   id          Int     @id @default(autoincrement())
   title       String
-  description String
+  description String  @db.LongText
   tags        Tag[]
   image       String?
   repo        String?
@@ -68,9 +68,8 @@ model Project {
 }
 
 model Tag {
-  id   Int    @id @default(autoincrement())
-  name String
-
+  id        Int      @id @default(autoincrement())
+  name      String
   Project   Project? @relation(fields: [projectId], references: [id])
   projectId Int?
 }

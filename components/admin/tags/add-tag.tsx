@@ -31,7 +31,7 @@ export default function TagForm() {
   async function handleForm({ name }: form) {
     const data = { name };
 
-    fetch("http://localhost:3000/api/tags", {
+    fetch("https://lucasdalan.vercel.app/api/tags", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

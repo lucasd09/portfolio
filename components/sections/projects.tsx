@@ -1,111 +1,83 @@
+"use client";
 import Image from "next/image";
-import { Card, CardContent, CardFooter } from "../ui/card";
-import { StaticImport } from "next/dist/shared/lib/get-img-props";
+import { Card, CardContent } from "../ui/card";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import { ExternalLink, Github } from "lucide-react";
-import portfolioimg from "@/public/portfolio.png";
-import learnly from "@/public/learnly.png";
-import reactpwa from "@/public/REACTPWA.png";
-import imob from "@/public/imob.png";
+import { useFetch } from "@/hooks/useSWR";
+import ProjectDetail from "./projects-detail";
 
-type project = {
+export type tag = {
   id: number;
   name: string;
-  technologies: string[];
-  imgURL: string | StaticImport;
-  github: string;
-  URL: string;
+  projectId: number;
 };
 
-const projects: project[] = [
-  {
-    id: 1,
-    name: "Portfolio - Lucas Dalan",
-    technologies: ["Typescript", "Next.js"],
-    imgURL: portfolioimg,
-    github: "https://github.com/lucasd09/portfolio",
-    URL: "https://lucasdalan.vercel.app/",
-  },
-  {
-    id: 2,
-    name: "Learnly",
-    technologies: ["Typescript", "Next.js", "vanilla-exctract"],
-    imgURL: learnly,
-    github: "https://github.com/lucasd09/learnly",
-    URL: "https://learnly-alpha.vercel.app/app/schedule",
-  },
-  {
-    id: 3,
-    name: "Clone Twitter - PWA",
-    technologies: ["Typescript", "React.js", "PWA"],
-    imgURL: reactpwa,
-    github: "https://github.com/lucasd09/react-pwa",
-    URL: "https://sabatine-react-pwa.vercel.app/",
-  },
-  {
-    id: 4,
-    name: "IMOB - Frontend",
-    technologies: ["Typescript", "Next.js"],
-    imgURL: imob,
-    github: "https://github.com/lucasd09/imob",
-    URL: "https://imob-alpha.vercel.app/login",
-  },
-  {
-    id: 5,
-    name: "IMOB - Backend",
-    technologies: ["Typescript", "Nest.js", "Prisma"],
-    imgURL: imob,
-    github: "https://github.com/lucasd09/imob-api",
-    URL: "",
-  },
-];
+export type project = {
+  id: number;
+  title: string;
+  description: string;
+  tags: tag[];
+  image: string;
+  repo: string;
+  url: string;
+};
 
 export default function ProjectsTab() {
+  const { data } = useFetch<project[]>("/projects");
+
   return (
     <div className=" flex mt-12 lg:w-[1200px] justify-evenly flex-wrap sm:w-full">
-      {projects.map((project) => {
-        return (
-          <Card
-            key={project.id}
-            className="rounded-sm lg:flex mb-8 dark:bg-secondary"
-          >
-            <Image
-              alt={project.name}
-              src={project.imgURL}
-              className="w-80 rounded-t-sm"
-            />
-            <CardContent className="mt-2 py-2 w-80 flex flex-col justify-between">
-              <div>
-                <h1 className="scroll-m-20 text-lg font-medium tracking-tight">
-                  {project.name}
-                </h1>
-                <div className="space-x-2">
-                  {project.technologies.map((technology) => {
-                    return <Badge key={technology}>{technology}</Badge>;
-                  })}
+      {data &&
+        data.map((project) => {
+          return (
+            <Card
+              key={project.id}
+              className="rounded-sm lg:flex mb-8 dark:bg-secondary"
+            >
+              <Image
+                alt={project.title}
+                src={project.image}
+                width={320}
+                height={180}
+                className="w-80 h-auto rounded-sm"
+              />
+              <CardContent className="mt-2 py-2 w-80 flex flex-col justify-between">
+                <div>
+                  <h1 className="scroll-m-20 text-lg font-medium tracking-tight">
+                    {project.title}
+                  </h1>
+                  <div className="space-x-2">
+                    {project.tags.map((tag) => {
+                      return <Badge key={tag.id}>{tag.name}</Badge>;
+                    })}
+                  </div>
                 </div>
-              </div>
-              <div className="flex justify-end space-x-2 py-2">
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Button variant={"outline"} size={"icon"}>
-                    <Github />
-                  </Button>
-                </a>
-                <a href={project.URL} target="_blank" rel="noopener noreferrer">
-                  <Button size={"icon"}>
-                    <ExternalLink />
-                  </Button>
-                </a>
-              </div>
-            </CardContent>
-          </Card>
-        );
-      })}
+                <div className="flex justify-end space-x-2 py-2">
+                  <ProjectDetail id={project.id} />
+                  <a
+                    href={project.repo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button variant={"outline"} size={"icon"}>
+                      <Github />
+                    </Button>
+                  </a>
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button size={"icon"}>
+                      <ExternalLink />
+                    </Button>
+                  </a>
+                </div>
+              </CardContent>
+            </Card>
+          );
+        })}
     </div>
   );
 }

@@ -29,7 +29,7 @@ const columns: ColumnDef<Project>[] = [
 ];
 
 export default function ProjectsAdmin() {
-  const { data } = useFetch<Project[]>("http://localhost:3000/api/projects");
+  const { data } = useFetch<Project[]>("/projects");
 
   return (
     <div className="container mx-auto py-10">

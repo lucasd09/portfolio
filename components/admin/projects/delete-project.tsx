@@ -32,7 +32,7 @@ export default function DeleteProject({ id }: { id: number }) {
           <AlertDialogCancel>Cancelar</AlertDialogCancel>
           <AlertDialogAction
             onClick={async () => {
-              await fetch(`http://localhost:3000/api/projects/${id}`, {
+              await fetch(`https://lucasdalan.vercel.app/api/projects/${id}`, {
                 method: "DELETE",
               });
               return toast("Sucesso", {

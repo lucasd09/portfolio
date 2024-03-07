@@ -6,6 +6,7 @@ export async function GET(
   { params }: { params: { slug: string } }
 ) {
   const project = await prisma.project.findUnique({
+    include: { tags: true },
     where: { id: parseInt(params.slug) },
   });
 

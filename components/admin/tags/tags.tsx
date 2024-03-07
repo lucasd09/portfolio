@@ -15,7 +15,7 @@ const columns: ColumnDef<Tag>[] = [
 ];
 
 export default function TagsAdmin() {
-  const { data } = useFetch<Tag[]>("http://localhost:3000/api/tags");
+  const { data } = useFetch<Tag[]>("/tags");
 
   return (
     <div className="container mx-auto py-10">
