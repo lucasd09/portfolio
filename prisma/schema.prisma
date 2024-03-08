@@ -1,5 +1,5 @@
 datasource db {
-  provider = "mysql"
+  provider = "cockroachdb"
   url      = env("DATABASE_URL")
 }
 
@@ -13,12 +13,12 @@ model Account {
   type              String
   provider          String
   providerAccountId String
-  refresh_token     String? @db.Text
-  access_token      String? @db.Text
+  refresh_token     String? @db.String()
+  access_token      String? @db.String()
   expires_at        Int?
   token_type        String?
   scope             String?
-  id_token          String? @db.Text
+  id_token          String?
   session_state     String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -55,9 +55,9 @@ model VerificationToken {
 }
 
 model Project {
-  id          Int     @id @default(autoincrement())
+  id          Int     @id @default(sequence())
   title       String
-  description String  @db.LongText
+  description String  @db.String()
   tags        Tag[]
   image       String?
   repo        String?
@@ -68,8 +68,7 @@ model Project {
 }
 
 model Tag {
-  id        Int      @id @default(autoincrement())
-  name      String
-  Project   Project? @relation(fields: [projectId], references: [id])
-  projectId Int?
+  id       Int       @id @default(sequence())
+  name     String
+  Projects Project[]
 }
