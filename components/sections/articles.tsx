@@ -8,7 +8,6 @@ export default function ArticlesTab() {
       <h1 className="scroll-m-20 text-xl font-bold tracking-tight">
         Em construção
       </h1>
-      <SkeletonCard />
     </div>
   );
 }
