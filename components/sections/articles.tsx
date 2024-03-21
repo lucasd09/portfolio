@@ -1,4 +1,5 @@
 import { Construction } from "lucide-react";
+import SkeletonCard from "./skeleton-card";
 
 export default function ArticlesTab() {
   return (
@@ -7,6 +8,7 @@ export default function ArticlesTab() {
       <h1 className="scroll-m-20 text-xl font-bold tracking-tight">
         Em construção
       </h1>
+      <SkeletonCard />
     </div>
   );
 }

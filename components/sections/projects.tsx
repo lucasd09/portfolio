@@ -6,6 +6,7 @@ import { Button } from "../ui/button";
 import { ExternalLink, Github } from "lucide-react";
 import { useFetch } from "@/hooks/useSWR";
 import ProjectDetail from "./projects-detail";
+import SkeletonCard from "./skeleton-card";
 
 export type tag = {
   id: number;
@@ -24,11 +25,14 @@ export type project = {
 };
 
 export default function ProjectsTab() {
-  const { data } = useFetch<project[]>("/projects");
+  const { data, isLoading, isValidating } = useFetch<project[]>("/projects");
 
   return (
     <div className=" flex mt-12 lg:w-[1200px] justify-evenly flex-wrap sm:w-full">
-      {data &&
+      {isLoading ? (
+        <SkeletonCard />
+      ) : (
+        data &&
         data.map((project) => {
           return (
             <Card
@@ -77,7 +81,8 @@ export default function ProjectsTab() {
               </CardContent>
             </Card>
           );
-        })}
+        })
+      )}
     </div>
   );
 }
