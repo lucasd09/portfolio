@@ -13,7 +13,7 @@ export default function ProjectDetail({ id }: { id: number }) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant={"outline"} size={"icon"}>
+        <Button variant={"outline"} size={"icon"} className="hidden lg:flex">
           <MoreHorizontal />
         </Button>
       </DialogTrigger>
