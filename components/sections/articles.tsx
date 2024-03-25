@@ -1,5 +1,4 @@
 import { Construction } from "lucide-react";
-import SkeletonCard from "./skeleton-card";
 
 export default function ArticlesTab() {
   return (
